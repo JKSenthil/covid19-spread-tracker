@@ -1,4 +1,4 @@
-#COVID-19 Spread Tracker
+# COVID-19 Spread Tracker
 
 Visualizing the spread of COVID-19 across the US, county by county, over time
 
