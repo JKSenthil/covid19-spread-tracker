@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{{url_for('static', filename='button.css')}}">
+
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/data.js"></script>
+<script src="https://code.highcharts.com/maps/modules/data.js"></script>
+<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+<script src="https://code.highcharts.com/mapdata/countries/us/us-all-all.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>COVID-19 Spread Tracker</title>
+</head>
+<body style="background-color:#fffeb7;">
+    <h2 align="center">COVID-19 Spread</h2>
+    <h3 id="date" align="center">{{data["dates"][-1]}}</h3>
+    {%for i in range(data["l"])%}
+        <div id="container{{i}}" style="display: none; height: 520px; width: 800px; margin: 0 auto; text-align:center; line-height: 520px">
+            Loading map...
+        </div>
+    {%endfor%}
+    <div align="center">
+        <a id="prev" href="#" class="previous">&laquo; Previous</a>
+        <a id="next" href="#" class="next">Next &raquo;</a>
+    </div>
+</body>
+<script src="{{url_for('static', filename='render_map.js')}}"></script>
+<script src="{{url_for('static', filename='button.js')}}"></script>
+<script type="text/javascript">
+    dates = {{data["dates"] | safe}}
+    currentIndex = dates.length - 1
+</script>
+</html>
