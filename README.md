@@ -2,7 +2,7 @@
 
 Visualizing the spread of COVID-19 across the US, county by county, over time
 
-![Screenshot](screenshot.png)
+![Alt text](screenshot.png?raw=true "Title")
 
 ## Getting Started
 
