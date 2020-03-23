@@ -1,4 +1,8 @@
+#!/usr/bin/env python3
 import pickle
+
+from extract import extract_counties_and_cases
+
 from selenium import webdriver
 from time import sleep
 
@@ -26,15 +30,13 @@ for state in states:
         span = driver.find_element_by_xpath("//span[text()='{}']".format(state))
     except:
         continue
+
     driver.execute_script("arguments[0].click();", span)
     counties = driver.find_element_by_class_name("counties")
     text = counties.text
     data = text.split("\n")
 
-    for i in range(0, len(data), 4):
-        county = data[i]
-        cases = data[i + 1].split("+")[0]
-        m[state][county] = int(cases)
+    m[state] = extract_counties_and_cases(data, m[state])
 
     driver.execute_script("arguments[0].click();", span)
 
